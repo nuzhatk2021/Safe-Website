@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 import "./safe-copilot.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:8000").replace(/\/$/, "");
 
 const SAMPLE_GUIDANCE = {
   technique: "Active Listening",
