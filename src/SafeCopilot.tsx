@@ -1,6 +1,8 @@
 import { useState, useRef, useCallback } from "react";
 import "./safe-copilot.css";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
 const SAMPLE_GUIDANCE = {
   technique: "Active Listening",
   phrase:
@@ -171,7 +173,7 @@ const stopListening = useCallback(() => {
     if (!situation.trim()) return;
     setLoading(true);
     try {
-      const res = await fetch("http://opossum-unlighted-portable.ngrok-free.dev/guidance", {
+      const res = await fetch(`${API_URL}/guidance`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ situation })
@@ -195,7 +197,7 @@ const stopListening = useCallback(() => {
     if (!followupQ.trim()) return;
     setFollowupA("Thinking...");
     try {
-      const res = await fetch("http://opossum-unlighted-portable.ngrok-free.dev/followup", {
+      const res = await fetch(`${API_URL}/followup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -215,7 +217,7 @@ const stopListening = useCallback(() => {
     if (!guidance) return;
     setSummaryLoading(true);
     try {
-      const res = await fetch("http://opossum-unlighted-portable.ngrok-free.dev/summary", {
+      const res = await fetch(`${API_URL}/summary`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
