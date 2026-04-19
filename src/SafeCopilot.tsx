@@ -171,7 +171,7 @@ const stopListening = useCallback(() => {
     if (!situation.trim()) return;
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/guidance", {
+      const res = await fetch("https://opossum-unlighted-portable.ngrok-free.app/guidance", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ situation })
@@ -195,7 +195,7 @@ const stopListening = useCallback(() => {
     if (!followupQ.trim()) return;
     setFollowupA("Thinking...");
     try {
-      const res = await fetch("http://localhost:8000/followup", {
+      const res = await fetch("https://opossum-unlighted-portable.ngrok-free.app/followup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -215,7 +215,7 @@ const stopListening = useCallback(() => {
     if (!guidance) return;
     setSummaryLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/summary", {
+      const res = await fetch("https://opossum-unlighted-portable.ngrok-free.app/summary", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
